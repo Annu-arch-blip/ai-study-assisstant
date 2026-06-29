@@ -4,6 +4,12 @@ Turns any topic, or pasted notes/chapter/question paper, into a simple quiz
 with beginner-friendly explanations. Built for students from class 1 through
 college.
 
+## Screenshots
+
+| Home | Make a Quiz | Results |
+|---|---|---|
+| ![Home](frontend/screenshots/home.png) | ![New Quiz](frontend/screenshots/new-quiz.png) | ![Results](frontend/screenshots/results.png) |
+
 ## Tech stack
 
 - **Frontend:** React (Vite) + Tailwind CSS v4 + React Router
