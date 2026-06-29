@@ -4,6 +4,11 @@ Turns any topic, or pasted notes/chapter/question paper, into a simple quiz
 with beginner-friendly explanations. Built for students from class 1 through
 college.
 
+## Live Demo
+
+- **Frontend:** [https://ai-studyassisstant.netlify.app/](https://ai-studyassisstant.netlify.app/)
+- **Backend health check:** [https://ai-study-assisstant-gjlj.onrender.com/api/health](https://ai-study-assisstant-gjlj.onrender.com/api/health)
+
 ## Screenshots
 
 | Login | Signup |
@@ -94,7 +99,7 @@ Fill in `.env`:
   Atlas → Network Access, like you did before)
 - `JWT_SECRET` — generate with:
   `node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"`
-- `GEMINI_API_KEY` — free key from https://aistudio.google.com/app/apikey
+- `GROQ_API_KEY` — free key from https://groq.google.com/app/apikey
 
 ```bash
 npm run dev
