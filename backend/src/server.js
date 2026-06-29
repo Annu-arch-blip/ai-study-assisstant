@@ -12,6 +12,7 @@ import historyRoutes from "./routes/historyRoutes.js";
 dotenv.config();
 
 const app = express();
+app.set("trust proxy", 1);
 import dns from "dns";
 dns.setServers(["1.1.1.1", "8.8.8.8"]);
 
