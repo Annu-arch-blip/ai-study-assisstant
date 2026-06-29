@@ -9,20 +9,21 @@ college.
 - **Frontend:** React (Vite) + Tailwind CSS v4 + React Router
 - **Backend:** Node.js + Express
 - **Database:** MongoDB (Atlas)
-- **AI:** Google Gemini (`gemini-2.0-flash`) — free tier, hosted, with
-  schema-enforced JSON output
+- **AI:** Groq (llama-3.3-70b-versatile) — free tier, hosted, extremely
+          fast Llama inference, with JSON-mode + multi-layer validation
 - **Auth:** JWT + bcrypt password hashing
 
 ## Why these choices (so you can explain this project confidently)
 
-**Why Gemini instead of Ollama?**
-Ollama runs locally on your machine — if the model hangs, runs out of RAM, or
-returns malformed text, your Node process can crash (this is what happened in
-your earlier Code Review Tool project). Gemini is hosted, has a genuinely
-free API tier, and supports `responseSchema` — meaning the API itself forces
-the AI to return correctly-shaped JSON instead of you hoping the model
-behaves. That single feature solves the PRD's "AI output is valid JSON"
-requirement at the source.
+**Why Groq instead of Ollama or a paid API?**
+Ollama runs locally on your own machine — great for development, but it
+can't run on a free hosting tier (no free service gives enough RAM/CPU for
+a multi-billion parameter model). Groq runs the same family of open models
+(Llama 3.x) on custom inference hardware that's dramatically faster than
+local Ollama, with a genuinely free API tier — no credit card required.
+It also supports JSON-mode (response_format: { type: "json_object" }),
+which guarantees syntactically valid JSON back from the model — solving the
+"AI output must be valid JSON" requirement at the API level.
 
 **Why "RAG-lite" instead of a real vector database?**
 A vector DB (Pinecone, Atlas Vector Search) is built for retrieving relevant
@@ -34,7 +35,7 @@ the most relevant chunks are sent to the AI, so the prompt stays focused.
 
 **How crashes are prevented this time:**
 1. `aiService.js` never throws — every path returns `{ success, ... }`.
-2. Gemini's `responseSchema` forces valid JSON structure.
+2. Groq's JSON-mode forces syntactically valid JSON.
 3. We still `try/catch` the JSON parse and validate each question's shape,
    as a second and third layer of defense.
 4. `server.js` has `process.on("unhandledRejection")` and
@@ -52,7 +53,7 @@ ai-study-quiz-assistant/
 │       ├── middleware/   → JWT auth guard, input validation
 │       ├── models/       → Mongoose schemas (User, Quiz)
 │       ├── routes/       → URL → controller mapping
-│       ├── services/     → aiService.js (Gemini integration)
+│       ├── services/     → aiService.js (Groq integration)
 │       ├── utils/        → JWT helper, RAG retrieval logic
 │       └── server.js     → app entry point
 └── frontend/
