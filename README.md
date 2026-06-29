@@ -6,9 +6,17 @@ college.
 
 ## Screenshots
 
-| Home | Make a Quiz | Results |
-|---|---|---|
-| ![Home](frontend/screenshots/home.png) | ![New Quiz](frontend/screenshots/new-quiz.png) | ![Results](frontend/screenshots/results.png) |
+| Login | Signup |
+|---|---|
+| ![Login](frontend/Screeshots/Login.png) | ![Signup](frontend/Screeshots/Signup.png) |
+
+| Home | New Quiz |
+|---|---|
+| ![Home](frontend/Screeshots/Home.png) | ![New Quiz](frontend/Screeshots/NewQuiz.png) |
+
+| History |
+|---|
+| ![History](frontend/Screeshots/History.png) |
 
 ## Tech stack
 
